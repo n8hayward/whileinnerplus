@@ -1,0 +1,30 @@
+#Program that returns innermost list +1
+
+def add_inner_list(input_list):
+    
+    print(f"Input list: {input_list}") 
+    
+    my_list = input_list #Redefine input_list 
+    
+    while True:
+        if any(isinstance(item, list) for item in my_list): #any() to find lists that are in mylist to navigate to innermost list
+            my_list = [item for item in my_list if isinstance(item, list)] #redefine list
+            print(my_list) #check content of my_list
+            if my_list:
+                my_list = my_list[-1] #redefine my_list to interate from last index
+                print(my_list) #check content of my_list
+            else:
+                break
+        else:
+            break
+
+#Add 1 to last list 
+    if isinstance(my_list, list):
+        add_one = [x + 1 for x in my_list] #create new list to add 1 to innermost list once while loop determines innermost list item
+        return add_one
+    else: 
+        return []
+
+#Test input list
+input_list = [1, 2, 3, 4, [5, 6, [7,8], 8, 9]]
+add_inner_list(input_list)
